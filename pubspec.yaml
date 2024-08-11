@@ -12,11 +12,14 @@ dependencies:
   flutter_screenutil:
   window_manager: ^0.3.9
   intl:
+  sqflite: ^2.3.3+1
+  path: ^1.9.0 
+  get:
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
-
+  sqflite_common_ffi: 
 flutter:
   uses-material-design: true
   assets:

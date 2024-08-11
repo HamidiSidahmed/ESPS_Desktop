@@ -1,7 +1,9 @@
+import 'package:epsp/controller/viewController.dart';
 import 'package:epsp/utils/addDialog.dart';
 import 'package:epsp/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class AddedData extends StatefulWidget {
   final String age;
@@ -10,12 +12,12 @@ class AddedData extends StatefulWidget {
   final String injectrionPlace;
   final String birthDate;
   final String lotNumber;
-  final Widget last;
 
+  int id;
   final List<AddedData> data;
   AddedData(
       {super.key,
-      required this.last,
+      required this.id,
       required this.data,
       required this.age,
       required this.vaccin,
@@ -49,6 +51,7 @@ class _AddedDataState extends State<AddedData>
     super.initState();
   }
 
+  ViewController _veiwcontroller = Get.find();
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(
@@ -158,7 +161,23 @@ class _AddedDataState extends State<AddedData>
                           ),
                         ),
                       ),
-                      widget.last
+                      InkWell(
+                        onTap: () {
+                          _veiwcontroller.list.removeAt(widget.id);
+                          int count = 0;
+                          for (var element in _veiwcontroller.list) {
+                            print(count);
+                            element.id = count;
+                            count = count + 1;
+                          }
+                          _veiwcontroller.update();
+                        },
+                        child: Container(
+                          width: 30.r,
+                          height: 30.r,
+                          child: Image.asset("assets/icons/faux.png"),
+                        ),
+                      ),
                     ],
                   ),
                 )
